@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    include("conexion.php");
+
+    $usuarioingresando = $_SESSION['usuarioingresando'];
+    $buscandousu = mysqli_query($conexion, "SELECT * FROM datos WHERE email = '".$usuarioingresando."'");
+    $mostrar = mysqli_fetch_array($buscandousu);
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,9 +22,10 @@
                 <span class="logo-text"></span>
             </div>
             <ul class="nav-links">
-                <li><a href="./login/index.php">Inicio de sesion</a></li>
+                <li><a href="<?php echo isset($_SESSION['usuarioingresando']) ? './profile.php' : './login/index.php'; ?>"><?php echo isset($_SESSION['usuarioingresando']) ? explode(' ', $mostrar['nombre'])[0] : 'Inicio de sesion'; ?></a></li>
                 <li><a href="./registro/index.php">Registro</a></li>
                 <li><a href="./contacto/index.php">Contacto</a></li>
+                <li><a href="./cerrar_session.php"><?php echo isset($_SESSION['usuarioingresando']) ? 'Cerrar Sesion' : ''; ?></a></li>
             </ul>
         </nav>
     </header>

@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    include("../conexion.php");
+    if(isset($_SESSION['usuarioingresando'])){
+        header("location: ../index.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -23,7 +30,7 @@
         <div class="form_container">
                 <div class="form_group">
                     <span class="input-icon">🐾</span>
-                    <input type="text" id="name" class="form_input" name="name" placeholder="Ingrese su nombre">
+                    <input type="text" id="name" class="form_input" name="name" placeholder="Ingrese su correo">
                     <span class="form_line"></span>
                 </div>
             

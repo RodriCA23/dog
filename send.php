@@ -23,8 +23,8 @@ if(isset($_POST['send'])){
             die("Connection failed: " . mysqli_connect_error());
         }
         
-        $query = "INSERT INTO datos(nombre, email, pass, telefono, fecha) 
-                 VALUES ('$nombre', '$email', '$password', '$telefono', '$fecha')";
+        $query = "INSERT INTO datos(nombre, email, pass, telefono,rol ,fecha) 
+                 VALUES ('$nombre', '$email', '$password', '$telefono','user','$fecha')";
         
         $result = mysqli_query($conexion, $query);
         
